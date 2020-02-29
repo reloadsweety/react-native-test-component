@@ -33,6 +33,7 @@ import TestPage from './components/TestPage';
 import ReactnativeElement from './components/ReactnativeElement';
 import ProductCard from './components/product/ProductCard';
 import ProductList from './components/product/ProductList';
+import ProductDetail from './components/product/ProductDetail';
 import SliderEX from './components/Slider';
 import styles from './components/CustomStyles';
 
@@ -58,7 +59,7 @@ const App = ({ navigation }) => {
           <View style={styles.body}>
             
             <View style={styles.sectionContainer}>
-              <Button title="TestPage2" onPress={() => navigation.push('TestPage')} />
+              <Button title="TestPage GAME" onPress={() => navigation.push('TestPage')} />
             </View>
             <View style={styles.sectionContainer}>
               <Button title="React-Native-Element" onPress={() => navigation.push('ReactnativeElement')} />
@@ -71,6 +72,9 @@ const App = ({ navigation }) => {
             </View>
             <View style={styles.sectionContainer}>
               <Button title="Slider" onPress={() => navigation.push('SliderEX')} />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Button title="ProductDetail" onPress={() => navigation.push('ProductDetail')} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
@@ -116,10 +120,19 @@ const AppStack = createStackNavigator(
         headerTitle: () => headerBar
       },
     },
-    TestPage,
+    TestPage:{
+      screen: TestPage,
+      navigationOptions: {
+        // headerRight: () => (
+        //   <Button  title="Update count" />
+        // ),
+        headerTitle: () => headerBar
+      },
+    },
     ReactnativeElement,
     ProductCard,
     ProductList,
+    ProductDetail,
     SliderEX: {
       screen: SliderEX,
       navigationOptions: {
@@ -134,13 +147,19 @@ const AppStack = createStackNavigator(
 
 const headerCSS = StyleSheet.create({
   imageIcon:{
-    marginTop: 10,
+    marginTop: 5,
     marginRight: 10,
       width: 30,
       height: 30
   },
   imageIcon2:{
-    marginTop: 13,
+    marginTop: 5,
+    marginRight: 10,
+      width: 27,
+      height: 27
+  },
+  imageSearch:{
+    marginTop: 0,
     marginRight: 10,
       width: 27,
       height: 27
@@ -155,6 +174,8 @@ const headerCSS = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderRadius: 10
   },
   searchIcon: {
     padding: 10
@@ -162,10 +183,13 @@ const headerCSS = StyleSheet.create({
   input: {
       flex: 1,
       paddingRight: 10,
-      paddingLeft: 0,
+      paddingLeft: 10,
       backgroundColor: '#fff',
       color: '#424242',
-      // height: 34
+      // borderWidth: 1,
+      lineHeight: 1,
+      height: 34,
+      fontSize: 13
   },
 })
 
@@ -186,7 +210,8 @@ const headerBar = (
           // onChangeText={(searchString) => {this.setState({searchString})}}
           underlineColorAndroid="transparent"
       />
-      <Icon style={headerCSS.searchIcon} name="search" size={20} color="#000"/>
+      <Image style={headerCSS.imageSearch} source={require('./static/images/icons/baseline_search_black_48dp.png')}  />
+      {/* <Icon style={headerCSS.searchIcon} name="search" size={20} color="#000"/> */}
     </View>
   </View>
 )

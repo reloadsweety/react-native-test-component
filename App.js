@@ -34,6 +34,8 @@ import ReactnativeElement from './components/ReactnativeElement';
 import ProductCard from './components/product/ProductCard';
 import ProductList from './components/product/ProductList';
 import ProductDetail from './components/product/ProductDetail';
+import ProductCategory from './components/product/ProductCategory';
+import ProductCategoryDetail from './components/product/ProductCategoryDetail';
 import SliderEX from './components/Slider';
 import styles from './components/CustomStyles';
 
@@ -75,6 +77,9 @@ const App = ({ navigation }) => {
             </View>
             <View style={styles.sectionContainer}>
               <Button title="ProductDetail" onPress={() => navigation.push('ProductDetail')} />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Button title="ProductCategory" onPress={() => navigation.push('ProductCategory')} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
@@ -133,6 +138,8 @@ const AppStack = createStackNavigator(
     ProductCard,
     ProductList,
     ProductDetail,
+    ProductCategory,
+    ProductCategoryDetail,
     SliderEX: {
       screen: SliderEX,
       navigationOptions: {
@@ -141,7 +148,7 @@ const AppStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'ProductCategory'
   }
 );
 

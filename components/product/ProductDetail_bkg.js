@@ -7,33 +7,22 @@ import {
     Text,
     TextInput,
     StatusBar,
-    // Image,
+    Image,
     FlatList,
     Button,
-    TouchableHighlight,
-    ActivityIndicator 
+    TouchableHighlight
   } from 'react-native';
 
-import { Card, ListItem, Icon, Badge, Rating, Image, AirbnbRating } from 'react-native-elements'
+import { Card, ListItem, Icon, Badge, Rating, AirbnbRating } from 'react-native-elements'
 import ImageSlider from 'react-native-image-slider';
-import { SliderBox } from "react-native-image-slider-box";
-import ProductCard from './partials/ProductCard';
 
 import styles from '../CustomStyles';
 
 const ProductDetail = ({ navigation }) => {
-
-    var viewCards = [];
-	for(let i = 0; i < 5; i++){
-        viewCards.push(
-            <ProductCard />
-        )
-    };
-
     const images = [
         // require('../static/images/indexSlider/xsurface_01.jpg'),
         // require('../static/images/indexSlider/xsurface_02.jpg'),
-        // require('../../static/images/indexSlider/xsurface_03.jpg'),
+        // require('../static/images/indexSlider/xsurface_03.jpg'),
         'https://placeimg.com/640/640/nature',
         'https://placeimg.com/640/640/people',
         'https://placeimg.com/640/640/animals',
@@ -43,29 +32,37 @@ const ProductDetail = ({ navigation }) => {
     return (
         <SafeAreaView>
             <ScrollView>
-                <View style={{ flex:1 }}>
-                    <SliderBox
+                <View style={detailStyles.sectionContainer}>
+                    <ImageSlider
+                        loopBothSides
+                        autoPlayWithInterval={2000}
                         images={images}
-                        sliderBoxHeight={500}
-                        autoplay
-                        circleLoop
-                        onCurrentImagePressed={index =>
-                            console.warn(`image ${index} pressed`)
-                        }
-                        dotStyle={{
-                            height:3,
-                            width:30,
-                            borderRadius: 5,
-                            marginHorizontal: -5,
-                            padding: 0,
-                            margin: 0,
-                        }}
-                        paginationBoxVerticalPadding={15}
-                        paginationBoxHorizontalPadding={5}
-                        inactiveDotColor="#90A4AE"
-                        dotColor="white"
-                        imageLoadingColor="#2196F3"
-                    />
+                        customSlide={({ index, item, style, width }) => (
+                            <View key={index} style={[style, slideImageTop.customSlide]}>
+                                {/* <Image source={item} style={slideImageTop.customImage} /> */}
+                                <Image source={{ uri: item}} style={slideImageTop.customImage} />
+                            </View>
+                        )}
+                        customButtons={(position, move) => (
+                            <View style={slideImageTop.buttons}>
+                                {images.map((image, index) => {
+                                    return (
+                                        <View>
+                                            <TouchableHighlight
+                                                key={index}
+                                                underlayColor="#ccc"
+                                                onPress={() => move(index)}
+                                                style={slideImageTop.button}
+                                            >
+                                                <View style={position === index ? slideImageTop.buttonActive : slideImageTop.buttonInActive}></View>
+                                            </TouchableHighlight>
+                                            
+                                        </View>
+                                    );
+                                })}
+                            </View>
+                        )}
+                    />    
                 </View>
                 <View style={detailStyles.sectionContainer}>
                     <View style={{flex: 1, flexDirection: 'row'}}>
@@ -98,16 +95,6 @@ const ProductDetail = ({ navigation }) => {
                     <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
                         <Text style={detailStyles.sectionHeader}>Relate Product</Text>
                     </View>
-                    <ScrollView scrollEventThrottle={16}>
-                        <View style={{ flex: 1, backgroundColor: 'white' }}>
-                        <ScrollView
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                        >
-                            {viewCards}
-                        </ScrollView>
-                        </View>
-                    </ScrollView>
                     <View style={styles.hr}/>
 
                 </View>
@@ -187,8 +174,7 @@ const detailStyles = StyleSheet.create({
     sectionContainer: {
         marginTop: 20,
         paddingHorizontal: 24,
-        textAlign: "center",
-        width: '100%'
+        textAlign: "center"
     },
     sectionHeader: {
         fontWeight: 'bold',
@@ -261,5 +247,54 @@ const detailStyles = StyleSheet.create({
     }
 
 })
+
+const slideImageTop = StyleSheet.create({
+  slider: { backgroundColor: '#000', height: 350 },
+  contentText: { color: '#fff' },
+  buttonSelected: {
+    opacity: 1,
+    color: 'red',
+  },
+  customSlide: {
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  customImage: {
+    width: '100%',
+    height: 500,
+  },
+  buttons: {
+    height: 15,
+    marginTop: -25,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  button: {
+    margin: 3,
+    width: 20,
+    height: 15,
+    opacity: 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12
+  },
+  buttonActive:{
+    height:3,
+    width:30,
+    backgroundColor: 'white',
+    
+    },
+    buttonInActive:{
+        height:3,
+        width:30,
+        backgroundColor: 'grey',
+    },
+    hidden:{
+        display: 'none'
+    }
+});
 
 export default ProductDetail

@@ -11,7 +11,7 @@ import { Image } from 'react-native-elements'
 const ProductCard = (props) => {
     return (
         <View style={viewCardStyles.viewCard} >
-            <TouchableOpacity onPress={() => props.navigation.push('ProductDetail')}>
+            <TouchableOpacity onPress={() => {props.navigation.push('ProductDetail'); console.log('click detail')}}>
                 <Image source={require('../../../static/images/3421.jpg')} style={viewCardStyles.imageCard}  />
             </TouchableOpacity>
             <View style={viewCardStyles.viewCardBody}>
@@ -23,7 +23,8 @@ const ProductCard = (props) => {
                     marginTop: 5
                 }}>
                     <Text style={viewCardStyles.viewCardPrice1}  >XXXX฿</Text>
-                    <Text style={viewCardStyles.viewCardPrice2}>{props.price}฿</Text>
+                    {/* <Text style={viewCardStyles.viewCardPrice2}>{props.price}฿</Text> */}
+                    <Text style={viewCardStyles.viewCardPrice2}>{props.index == null ? props.price : props.index}฿</Text>
                 </View>
             </View>
         </View>

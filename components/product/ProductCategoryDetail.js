@@ -58,13 +58,16 @@ const ProductCategoryDetail  = ({ navigation }) => {
 
         setTimeout(
             () => {
-                setLoading(false)
-                let newData = []
-                for (let i = 0; i< 6; i++){
-                    newData.push({key: page+'_'+i})
+                if(loading){
+                    let newData = []
+                    for (let i = 0; i< 6; i++){
+                        newData.push({key: page+'-'+i})
+                    }
+                    setPage(page+1)
+                    setData(data.concat(newData))
+                    setLoading(false)
                 }
-                setPage(page+1)
-                setData(data.concat(newData))
+
             },
             3000
           )
@@ -90,7 +93,7 @@ const ProductCategoryDetail  = ({ navigation }) => {
                     <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginVertical:10 }}>
                         <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={stylesC.categoryTitle}> Best Seller </Text>
-                            <Text style={stylesC.categoryTotal}> 87 popular itmes</Text>
+                            <Text style={stylesC.categoryTotal}> 88 popular itmes</Text>
                         </View>
                     </View>
                 </View>

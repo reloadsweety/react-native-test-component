@@ -19,6 +19,7 @@ import { Card, ListItem, Icon, Badge, Rating, Image, AirbnbRating } from 'react-
 import ImageSlider from 'react-native-image-slider';
 import { SliderBox } from "react-native-image-slider-box";
 import ProductCard from './partials/ProductCard';
+import Similar from './partials/Similar';
 
 import styles from '../CustomStyles';
 
@@ -67,6 +68,46 @@ const ProductCategory = ({ navigation }) => {
         <SafeAreaView>
             <ScrollView>
                 <View style={styles.sectionContainer}>
+                    <View style={stylesC.topImage}>
+                        <Image style={{width: '100%', height: 200}} source={require('../../static/images/top_image.jpg')} />
+                    </View>
+                </View>
+                <View style={styles.sectionContainer}>
+                    <ScrollView scrollEventThrottle={16}>
+                        <View style={{ flex: 1, backgroundColor: 'white' }}>
+                                <ScrollView
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    <Similar imageUri={require('../../static/images/surface/P03.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P04.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P03.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P04.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P03.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P04.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P03.jpg')}
+                                        name="Suface"
+                                    />
+                                    <Similar imageUri={require('../../static/images/surface/P04.jpg')}
+                                        name="Suface"
+                                    />
+                                </ScrollView>
+                        </View>
+                    </ScrollView>
+                </View>
+                <View style={styles.sectionContainer}>
                     {renderCategories}
                 </View>
             </ScrollView>
@@ -75,6 +116,13 @@ const ProductCategory = ({ navigation }) => {
 };
 
 const stylesC = StyleSheet.create({
+    topImage:{
+        borderWidth: 1,
+        borderColor: '#E0E0E0',
+        borderRadius: 10,
+        marginBottom: 15,
+        overflow: "hidden"
+    },
     card:{
         padding: 10,
         borderWidth: 1,

@@ -9,6 +9,12 @@ import {
 
 
 const styles = StyleSheet.create({
+    hr: {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        opacity: 0.1,
+        marginTop: 15
+    },
     headerTitle:{
         fontSize: 18,
         fontWeight: '700',

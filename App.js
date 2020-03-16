@@ -148,7 +148,7 @@ const AppStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'ProductCategory'
+    initialRouteName: 'Home'
   }
 );
 

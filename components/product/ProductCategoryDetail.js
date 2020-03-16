@@ -90,12 +90,15 @@ const ProductCategoryDetail  = ({ navigation }) => {
                 //   scrollEventThrottle={2000}
             > */}
                 <View style={styles.sectionContainer}>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginVertical:10 }}>
-                        <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{alignItems: 'center',}}>
+
                             <Text style={stylesC.categoryTitle}> Best Seller </Text>
                             <Text style={stylesC.categoryTotal}> 88 popular itmes</Text>
+                </View>
+                    {/* <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', marginVertical:10 }}>
+                        <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         </View>
-                    </View>
+                    </View> */}
                 </View>
                 <View style={styles.sectionContainer}>
                     <View style={{ padding: 10}}>

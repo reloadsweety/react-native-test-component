@@ -18,10 +18,9 @@ const SliderEX = ({ navigation }) => {
         require('../static/images/indexSlider/xsurface_01.jpg'),
         require('../static/images/indexSlider/xsurface_02.jpg'),
         require('../static/images/indexSlider/xsurface_03.jpg'),
-        require('../static/images/3421.jpg'),
         // 'https://placeimg.com/640/640/nature',
         // 'https://placeimg.com/640/640/people',
-        // 'https://placeimg.com/640/640/animals',
+        // 'ht dtps://placeimg.com/640/640/animals',
         // 'https://placeimg.com/640/640/beer',
       ];
 

@@ -18,6 +18,7 @@ const SliderEX = ({ navigation }) => {
         require('../static/images/indexSlider/xsurface_01.jpg'),
         require('../static/images/indexSlider/xsurface_02.jpg'),
         require('../static/images/indexSlider/xsurface_03.jpg'),
+        require('../static/images/3421.jpg'),
         // 'https://placeimg.com/640/640/nature',
         // 'https://placeimg.com/640/640/people',
         // 'https://placeimg.com/640/640/animals',
@@ -25,10 +26,6 @@ const SliderEX = ({ navigation }) => {
       ];
 
     return (
-        <SafeAreaView style={styles.container}>
-          {/* <View style={styles.content1}>
-            <Text style={styles.contentText}>Content 1</Text>
-          </View> */}
           <ImageSlider
             loopBothSides
             // autoPlayWithInterval={2000}
@@ -69,10 +66,6 @@ const SliderEX = ({ navigation }) => {
               </View>
             )}
           />
-          {/* <View style={styles.content2}>
-            <Text style={styles.contentText}>Content 2</Text>
-          </View> */}
-        </SafeAreaView>
     );
 }
 
